@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+
+\usepackage{mathrsfs}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{fullpage}
+\usepackage{indentfirst}
+
+%\setcounter{MaxMatrixCols}{20}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{theorem}
+
+\newcommand{\black}{\hfill{\ensuremath{\blacksquare}}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\vspace{4cm}
+	{\scshape\Large DSE 210\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Homework 2\par}
+	\vspace{2cm}
+	{\Large\itshape Kevin Kannappan\par}
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+\section{Random Variable, Expectation, and Variance}
+\subsection{Worksheet 4}
+\begin{enumerate}
+\item Let $X = min(X_{1},X_{2})$ where $X_{1}$ and $X_{2}$ are the outcomes of respective dice rolls.\\
+$\Omega = \{1,2,3,4,5,6\}$. Beginning with $6 = min(X_{1},X_{2})$, we know that there is one possibility, $\{6,6\}$.\\
+Hence, we can define the following distribution of $X$, decreasing from 6:\\
+\\
+\begin{tabular}{ |p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ \multicolumn{7}{|c|}{Distribution of $X$} \\
+ \hline
+ $min(X_{1},X_{2})$&1&2&3&4&5&6 \\
+ \hline
+ $Pr(X =x)$&$\frac{11}{36}$&$\frac{1}{4}$&$\frac{7}{36}$&$\frac{5}{36}$&$\frac{1}{12}$& $\frac{1}{36}$ \\
+ \hline
+\end{tabular}
+\item $6$. Since, $6 \times \frac{1}{6} = 1$. 
+\addtocounter{enumi}{1}
+\item
+	\begin{enumerate}
+	\item $\binom{n}{1}*\frac{1}{10}*\frac{9}{10}^{n-1}$ as there are $\binom{n}{1}$ ways of selecting an individual to get off at a particular floor with equal probability $\frac{1}{10}$, with the remaining $n-1$ individuals selecting from $\frac{9}{10}$ floors.
+	\item $10*\binom{n}{1}*\frac{1}{10}*\frac{9}{10}^{n-1}$. Since each floor has an equal probability, it is like a coin flip, hence it is $n*p$, for which $n=10$.
+	\end{enumerate}
+\addtocounter{enumi}{1}
+\item Let $X$ represent the number of people who end up in their own bed. Hence, \\
+$X = x_{1}+x_{2}+\dots+x_{n}$ where
+\begin{align}
+x_{i} & = \begin{cases}
+                1, & $if person ends in the 1st bed$\\
+                 0, & $otherwise.$
+                    \end{cases}
+\end{align}
+Now, we have $Pr(x_{i}=1)=\frac{1}{n}$, which, by the linearity of expectation yields $E(x_{i})=\frac{1}{n}*n = 1$. The expected number of students who end up in their own bed is $1$.
+\item
+	\begin{enumerate}
+	\item $Pr(X) = \frac{1}{n}$ and $Pr(Y) = \frac{1}{n}$. If $X=Y$, then $Pr(X\cap Y)=0$ because $X \neq Y$ by permutation principles. Hence, $X$ and $Y$ are dependent.
+	\addtocounter{enumii}{1}
+	\item $Pr(X\cap Y) = \frac{1}{52}$, since there is only one card that is both a 9 and a heart. If the result is independent, then:\\
+	$Pr(X\cap Y) = Pr(X)*Pr(Y)$ Computing the probabilities we have:\\
+	$Pr(X) = \frac{1}{13}$, $Pr(Y) = \frac{1}{4}$. Lastly, \\
+	$Pr(X\cap Y) = \frac{1}{13} * \frac{1}{4} = \frac{1}{52}$. $X$ and $Y$ are independent.
+	\end{enumerate}
+\item
+	\begin{enumerate}
+	\item $E(Z) = 1\times \frac{1}{8} + 2\times \frac{1}{8} + 3\times \frac{1}{8} + 4\times \frac{1}{8} + 5\times \frac{1}{4} + 6\times \frac{1}{4}$, or \\
+$E(Z) = \frac{10}{8} +  \frac{10}{8} +  \frac{12}{8} = 4$. $E(Z)=4$.\\
+$Var(Z) = E(Z^{2})-\mu^{2}$. Computing it out we have:\\
+$Var(Z) = 1\times \frac{1}{8} + 4\times \frac{1}{8} + 9\times \frac{1}{8} + 16\times \frac{1}{8} + 25\times \frac{1}{4} + 36\times \frac{1}{4} - 4^{2}$\\
+$Var(Z) = 19-16 = 3$. $Var(Z) = 3$.
+	\item By expected value and variance rules, I expect $E(X) = 40$ and $Var(X) = 30$. Written out we see:\\
+	$E(X) = E(X_{1})+E(X_{2}) + \dots + E(X_{10})$. Or, $E(X) = 10*4$. For variance of X, we have:\\
+	$Var(X) = Var(X_{1})+Var(X_{2}) + \dots + Var(X_{10})$. Or, $Var(X) = 10*3$.
+	\item Because we are taking the average of all the rolls, $A$, we know that it is the sum of the rolls, divided by the number of times the dice is rolled, $n$. $E(A) = 4$ because it is the definition of expectation. For variance, we know by the rules of variance that $var(aX+b)=a^{2}var(X)$. Leveraging this property, we can conclude $Var(A) = \frac{3}{n}$.
+	\end{enumerate}
+\addtocounter{enumi}{3}
+\item There is a way to solve this problem using an infinite sum, considering that there is always a possibility of starting over (next coin mismatches the previous). However, by indicating that there is an initial dead toss, toss $+1$, then there is an expected number of tosses $2$ to generate that particular outcome. Hence, the expected number of tosses to yield a consecutive outcome is $1+2=3$.
+\end{enumerate}
+\bigskip
+
+\section{Classification with generative models 1}
+\subsection{Worksheet 5}
+\begin{enumerate}
+\item 
+	\begin{enumerate}
+	\item As the probability of talking a little, $Pr($talks a little$) = \frac{1}{6}$, is the same for both happy and sad classes, we can reason that his most likely mood is happy, since it has a higher fraction of the data with that label.
+	\item $\frac{1}{4}$, since it is the probability of not being happy (sad).
+	\end{enumerate}
+\item \begin{align}
+h^{*}(X ,Y) & = \begin{cases}
+                Y= 1, & $for $X \in [-1,0)\\
+                Y = 3, & $for$ X \in [0,1].
+                    \end{cases}
+             \end{align}
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+\usepackage{mathrsfs}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{fullpage}
+\usepackage{indentfirst}
+
+%\setcounter{MaxMatrixCols}{20}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{theorem}
+
+\newcommand{\black}{\hfill{\ensuremath{\blacksquare}}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\vspace{4cm}
+	{\scshape\Large DSE 210\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Homework 3\par}
+	\vspace{2cm}
+	{\Large\itshape Kevin Kannappan\par}
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+\section{Generative models 2}
+\subsection{Worksheet 6}
+\begin{enumerate}
+\item
+	\begin{enumerate}
+	\item Uncorrelated
+	\item Positively Correlated
+	\item Negatively Correlated
+	\end{enumerate}
+\addtocounter{enumi}{1}
+\item
+	\begin{enumerate}
+	\item Unique Bivariate Gaussian, parameterized bymean: $\mu = \binom{2}{2}$ and Covariance Matrix:
+	\[
+Cov(x,y)=
+  \begin{bmatrix}
+    1 & -0.25 \\
+    -0.25 & 0.25
+  \end{bmatrix}
+\]\\
+	Because each standard deviation squared provides the variance, we are able to get the diagonals of the matrix. Calculating the covariance comes from the correlation formula: $corr(x,y) = \frac{cov(x,y)}{std(x)*std(y)}$.
+	\item Unique Bivariate Gaussian, parameterized bymean: $\mu = \binom{1}{1}$ and Covariance Matrix:
+	\[
+Cov(x,y)=
+  \begin{bmatrix}
+    1 & 1 \\
+    1 & 1
+  \end{bmatrix}
+\]\\
+	Because each standard deviation squared provides the variance (1:1), we are able to get the diagonals of the matrix. Since $y=x$, intuitively we know that their covariance must equal 1.
+	\end{enumerate}
+\bigskip
+Please see attached Jupyter notebook for questions 4 and 5.
+\end{enumerate}
+\bigskip
+
+\section{Linear Algebra Primer}
+\subsection{Worksheet 7}
+\begin{enumerate}
+\item $||x|| = \sqrt{1^{2}+2^{2}+3^{2}} = \sqrt{14}$. Hence the unit vector in the same direction as x is: $\vec{x_{u}} = (\frac{1}{\sqrt{14}},\frac{2}{\sqrt{14}},\frac{3}{\sqrt{14}})$.
+\item Dot product must equal 0 for orthogonality, hence need to see a relation like: $\binom{1}{1}\cdot \binom{-1}{1} = -1+1 = 0$. Taking the unit vectors, we get: $(\frac{-1}{\sqrt{2}},\frac{1}{\sqrt{2}})$ and $(\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}})$.
+\item $x\cdot x = 25$, hence $||x||^{2}=x \cdot x$ and thus 5 is the magnitude. In 2 dimensions, we know that this is a circle with radius 5 and in 3 dimensions this would be a sphere with radius 5. Because we have $d$ dimensions, this would be classified as a hypersphere with radius 5.
+\item 
+\begin{align}
+    w &= \begin{bmatrix}
+           2 \\
+           -1 \\
+           6
+         \end{bmatrix}
+ \end{align}
+\item Following matrix multiplication properties, we know $A = 10 \times 30$ and $B = 30 \times 20$.
+\item
+	\begin{enumerate}
+	\item $n \times d$.
+	\item $n \times n$.
+	\item $x^{i} \cdot x^{j}$.
+	\end{enumerate}
+\addtocounter{enumi}{1}
+\item $x^{T}x = ||x||^{2}$. Hence, we have $\sqrt{1^{2}+3^{2}+5^{2}}^{2} = 35$. $xx^{T}$ is a matrix multiplied by its transpose:\\
+	\[
+xx^{T}=
+  \begin{bmatrix}
+    1 & 3 & 5 \\
+    3 & 9 & 15 \\
+    5 & 15 & 25
+  \end{bmatrix}
+\]
+\addtocounter{enumi}{1}
+\item Writing a symmetric matrix, we have:\\
+	\[
+M=
+  \begin{bmatrix}
+    3 & 1 & -2 \\
+    1 & 0 & 0 \\
+    -2 & 0 & 6
+  \end{bmatrix}
+\]
+\item a) and c). a) because of multiplicative properties and c) because of additive properties. Not d) because of negative values within the matrix.
+\addtocounter{enumi}{1}
+\item
+	\begin{enumerate}
+	\item $UU^{T}$ yields the $d \times d$ identity matrix, $I^{d}$.
+	\item Following part a), we know from matrix properties that any matrix $M$, multiplied by its inverse $M^{-1}$, yields the identity matrix. Hence, we can conclude that $U^{-1} = U^{T}$.
+	\end{enumerate}
+\item $z = 6$, since the discriminant must = 0. Leaves us with $z-6=0$ and 6.
+\end{enumerate}
+\bigskip
+
+\section{Classification with Generative Models 3}
+\subsection{Worksheet 8}
+\bigskip
+Please see attached Jupyter notebook for digit classification.
+
+
+\end{document}

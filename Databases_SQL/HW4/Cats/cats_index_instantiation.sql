@@ -1,0 +1,1 @@
+CREATE INDEX precompute_u_id_index on precompute_likes(user_id);

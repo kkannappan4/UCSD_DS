@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+.hed {
+    font-family: SourceSansPro-Bold;
+    font-size: 24pt;
+    margin-bottom:5px; 
+    margin-top:0px;
+    }
+    
+.subheader {
+    font-family: SourceSansPro-Light;
+    font-size: 12pt;
+    margin-bottom:0px; 
+    margin-top:0px;
+    }   
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+</style>
+
+<body>
+<div id="container">
+      <p id="headline" class="hed">Winning Country Gold Medal Rate at the Winter Olympics</p>
+      <br>
+      <p class="subheader">Of the five-most winningest countries at each Olympics, which countries win Gold?<br>Examining the "If you aren't first, you're last" phenomenon:</p>
+	  </div>  
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<div id="graphic"> </div>
+
+<script>
+
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 30, left: 50},
+    width = 600 - margin.left - margin.right,
+    height = 270 - margin.top - margin.bottom;
+
+ // set headline and sub-head to be as wide as svg:
+d3.select('#subheader')
+    .style('width', width+'px');
+d3.select('#headline')
+    .style('width',width+'px');
+
+// Parse the date / time
+var parseYear = d3.time.format("%Y").parse;
+
+// Set the ranges
+var x = d3.time.scale().range([0, width]);
+var y = d3.scale.linear().range([height, 0]);
+
+// Define the axes
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(5);
+
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(5);
+
+// Define the line
+var ratline = d3.svg.line()	
+    .x(function(d) { return x(d.Year); })
+    .y(function(d) { return y(d.fp_ratio); });
+
+// Adds the svg canvas
+var svg = d3.select("#graphic")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+ // Get the data
+d3.csv("olympics_5.csv", function(error, data) {
+    data.forEach(function(d) {
+		d.Year = parseYear(d.Year);
+		d.fp_ratio = +d.fp_ratio;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.Year; }));
+    y.domain([0, d3.max(data, function(d) { return d.fp_ratio; })]);
+
+    // Nest the entries by contry code
+    var dataNest = d3.nest()
+        .key(function(d) {return d.country_code;})
+        .entries(data);
+
+    var color = d3.scale.category10();  // set the colour scale
+
+    // Loop through each symbol / key
+    dataNest.forEach(function(d) {
+
+        svg.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add dynamically
+                return d.color = color(d.key); })
+            .attr("d", ratline(d.values));
+
+    });
+
+    // Add the X Axis
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    // Add the Y Axis
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+});
+
+</script>
+</body>

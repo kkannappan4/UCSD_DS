@@ -1,0 +1,17 @@
+quarter,region,value
+Quarter1,North,9100
+Quarter2,North,9400
+Quarter3,North,2700
+Quarter4,North,4000
+Quarter1,East,8400
+Quarter2,East,3000
+Quarter3,East,6200
+Quarter4,East,8900
+Quarter1,South,8700
+Quarter2,South,1500
+Quarter3,South,1100
+Quarter4,South,5600
+Quarter1,West,6100
+Quarter2,West,2050
+Quarter3,West,4100
+Quarter4,West,4200

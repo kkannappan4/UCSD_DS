@@ -1,0 +1,50 @@
+
+-- Question 2
+PREPARE Q2 (int) AS
+select
+	v.video_id,
+    count(v.video_id) as rank
+from video v, likes l
+where v.video_id = l.video_id
+and l.user_id IN (select distinct friend_id as user_id from friend
+where user_id = $1)
+group by 1
+order by 2 desc, 1
+limit 10;
+
+EXECUTE Q2 (1);
+
+-- Better
+PREPARE Q2_better (int) AS
+select
+	v.video_id,
+    count(v.video_id) as rank
+from video v, likes l
+where v.video_id = l.video_id
+and l.user_id IN (select distinct friend_id as user_id from friend
+where user_id = $1)
+and 
+    not exists (select 1 from watch w where w.user_id = $1 and w.video_id = v.video_id)
+group by 1
+order by 2 desc, 1
+limit 10;
+
+EXECUTE Q2_better (1);
+
+-- Best:
+PREPARE Q2_best (int) AS
+select
+	v.video_id,
+    count(v.video_id) as rank
+from video v, likes l
+where v.video_id = l.video_id
+and l.user_id IN (select distinct friend_id as user_id from friend
+where user_id = $1)
+and 
+    not exists (select 1 from watch w where w.user_id = $1 and w.video_id = v.video_id) and
+	not exists (select 1 from likes ll where ll.user_id = $1 and ll.video_id =v.video_id)
+group by 1
+order by 2 desc, 1
+limit 10;
+
+EXECUTE Q2_best (1);

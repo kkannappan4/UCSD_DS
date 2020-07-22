@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+
+\usepackage{mathrsfs}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{fullpage}
+\usepackage{indentfirst}
+
+%\setcounter{MaxMatrixCols}{20}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{theorem}
+
+\newcommand{\black}{\hfill{\ensuremath{\blacksquare}}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\vspace{4cm}
+	{\scshape\Large DSE 210\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Homework 1\par}
+	\vspace{2cm}
+	{\Large\itshape Kevin Kannappan\par}
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+
+\section{Sets and Counting}
+\subsection{Worksheet 1}
+\begin{enumerate}
+\item
+	\begin{enumerate}
+	\item A = $\{a,b,c,d,e\}$; $|A|$ = 5
+	\item $A^{3} = A \times A \times A$
+	\item $5^{3} = 125$
+	\end{enumerate}
+\item $2^{500}$
+\item
+	\begin{enumerate}
+	\item 7, $|A| + |B|$
+	\item 4, $A \subset B$
+	\item Largest = 3, $A \subset B$;  Smallest = $\o$, no intersection
+	\end{enumerate}
+\item $4! = 4*3*2 = 24$, order $4$ separate animals.
+\item $26^{5} = 11,881,376$, alphabet sequence length $5$.
+\item Pick $3$ items out of $10$ possibilities: $\binom{10}{3} = \frac{10*9*8}{3*2} = 120$
+\item Pick $5$ items out of $10$ possibilites, order $5$ separate ways. $\binom{10}{5}*5! = \frac{10!}{5!*5!} = 10*9*8*7*6=30,240$
+\end{enumerate}
+\bigskip
+
+\section{Probability Spaces}
+\subsection{Worksheet 2}
+\begin{enumerate}
+\addtocounter{enumi}{1}
+\item
+	\begin{enumerate}
+	\item $\Omega = \{H,T\}^{200}$; $|\Omega| = 2^{200}$
+	\end{enumerate}
+\item
+	\begin{enumerate}
+	\item $A\cap B \cap C$
+	\item $A\cup B \cup C$
+	\item $A\cap B \cap C^{c}$, where $C^{c}$ is the complement of $C$
+	\end{enumerate}
+\item
+	\begin{enumerate}
+	\item $Pr(c) = 1-(Pr(a)+Pr(b)) = \frac{1}{6}$
+	\item 8; $\big\{\{\},\{a\},\{b\},\{c\},\{ab\},\{ac\},\{bc\},\{abc\}\big\}$
+	\item $Pr(\{\})=0$, $Pr(\{a\})=\frac{1}{2}$, $Pr(\{b\})=\frac{1}{3}$,  $Pr(\{c\})=\frac{1}{6}$,  $Pr(\{ab\})=\frac{5}{6}$,  $Pr(\{ac\})=\frac{2}{3}$,  $Pr(\{bc\})=\frac{1}{2}$,  $Pr(\{abc\})=1$
+	\end{enumerate}
+\item
+	\begin{enumerate}
+	\item $E_{1}=$ ``The first shot is heads.'' $Pr(E_{1}) = \frac{4}{8} = \frac{1}{2}$
+	\item $E_{2}=$ ``All three tosses are the same result.''  $Pr(E_{2}) = \frac{2}{8} = \frac{1}{4}$
+	\item $E_{3}=$ ``There is exactly one tails.'' $Pr(E_{3}) = \frac{3}{8} $
+	\end{enumerate}
+\item $Pr(A\cup B) = Pr(A) + Pr(B) - Pr(A\cap B)\\
+Pr(A^{c}) = 1-Pr(A)\\
+\frac{1}{3} = 1-Pr(A)$; $Pr(A) = \frac{2}{3}$. Substitute values:\\
+$Pr(A\cup B) = \frac{2}{3} + \frac{1}{2} - \frac{1}{4} = \frac{11}{12}$
+\item $|\Omega| = 6^{2}$, $\Omega = \{1,2,3,4,5,6\}$; $6 x\times \frac{1}{6^{2}} = \frac{6}{36} = \frac{1}{6}$ 
+\addtocounter{enumi}{1}
+\item $100 = x + 2x + 3x + 4x + 5x + 6x\\
+100 = 21x$; $Pr(1) = 1/21)$. Hence, $Pr(even)$ = $Pr(2,4,6) = \frac{2}{21} + \frac{4}{21} + \frac{6}{21}\\
+= \frac{12}{21}$
+\addtocounter{enumi}{1}
+\item Only one possibility. Because the five people have different heights, the formula for the individuals being arranged in increasing order of height is $1 \times \frac{1}{5!} = \frac{1}{120}$
+\addtocounter{enumi}{2}
+\item $Pr(all\,apples\,good) = \frac{\frac{90!}{80!}}{\frac{100!}{90!}} \approx 0.33$
+\end{enumerate}
+\bigskip
+
+\section{Multiple events, conditioning, and independence}
+\subsection{Worksheet 3}
+\begin{enumerate}
+\item
+	\begin{enumerate}
+	\item Looking for $Pr(\{HT\},\{TH\})$. Hence, $Pr(2H|H) = \frac{1}{2}$
+	\item Looking for $Pr(\{HH\})$. Hence, $Pr(2H|T) = \frac{1}{4}$
+	\item Looking for $Pr(\{T\})$. Hence, $Pr(2H|2H) = \frac{1}{2}$
+	\end{enumerate}
+\addtocounter{enumi}{3}
+\item
+	\begin{enumerate}
+	\item $Pr(Heart|Red) = \frac{1}{2}$. Even possibility with a Diamond.
+	\item $Pr(>10|Heart) = \frac{4}{13}$. $13$ Heart cards, $4$ higher than $10$.
+	\item $Pr(Jack|>10) = \frac{1}{4}$. $4$ suits of cards, each with equal likelihood of being $> 10$.
+	\end{enumerate}
+\addtocounter{enumi}{1}
+\item
+	\begin{enumerate}
+	\item $Pr(>7|4) = Pr(\{4,5,6\}) = \frac{1}{2}$ 
+	\addtocounter{enumii}{1}
+	\item $Pr(>7|3) = \frac{Pr(>7 \cap >3)}{Pr(>3)}$\\
+	$12$ possibilities on the intersection (counted them up), hence: $\frac{\frac{12}{36}}{\frac{1}{2}} = \frac{2}{3}$
+	\end{enumerate}
+\addtocounter{enumi}{1}
+\item 
+	\begin{enumerate}
+	\item $Pr(D) = (0.05)*(0.25)\, + \, (0.04)*(0.35)\, + \, (0.02)*(0.4) = 0.0345$
+	\item $Pr(F_{1}|D) = \frac{Pr(D|F_{1})*Pr(F_{1})}{Pr(D)}$\\
+	$= \frac{(0.05)*(0.25)}{.0345} = 0.3623$
+	\end{enumerate}
+\item $Pr(M|C) = \frac{Pr(C|M)*Pr(M)}{Pr(C)}$,\\
+$Pr(C) = (0.5)*(0.05)\,+\,(0.5)*(0.1) = 0.03$, inserting into original equation:\\
+$\frac{(0.05)*(0.5)}{0.03} = \frac{5}{6}$
+\addtocounter{enumi}{1}
+\item $Pr(Trick|6H) = \frac{Pr(6H|Trick)*Pr(Trick)}{Pr(6H)}\\
+= \frac{Pr(6H|Trick)*Pr(Trick)}{Pr(6H|Trick)*Pr(Trick)\,+\,Pr(6H|Fair)*Pr(Fair)}\\
+= \frac{1*\frac{1}{65}}{(1*\frac{1}{65})+(\frac{1}{64}*\frac{64}{65}}\\
+=\frac{\frac{1}{65}}{\frac{2}{65}} = \frac{1}{2}$
+\addtocounter{enumi}{1}
+\item $Pr(B|S) = \frac{Pr(S|B)*Pr(B)}{Pr(S)}$,\\
+$Pr(S) = (0.75)*(0.1)\,+\,(0.25)*(0.6) = 0.225$, inserting into original equation:\\
+$\frac{(0.6)*(0.25)}{0.225} = \frac{2}{3}$
+\item
+	\begin{enumerate}
+	\item Event pairs (1) and (2). Work for (2):\\
+	$Pr(A\cup D) = Pr(A)*Pr(D)$ for independence:\\
+	$Pr(A) = \frac{1}{2}$, $Pr(D) = \frac{2}{8} = \frac{1}{4}$\\
+	$Pr(A\cup D) = \frac{1}{2} * \frac{1}{4} + 0$ as the first roll must be a H, and thus the next 2 rolls must also be H.\\
+	Hence, $\frac{1}{2} * \frac{1}{4} = \frac{1}{2} * \frac{1}{4} = \frac{1}{8}$. Events A and D are independent.
+	\end{enumerate}
+\item Event paris (2) and (4). Work for (4):\\
+	$Pr(A\cup B) = Pr(B)*Pr(B)$ for independence:\\
+	$Pr(A) = \frac{1}{4}$, $Pr(B) = \frac{1}{13}$\\
+	$Pr(A\cup B) = \frac{1}{4} * \frac{4}{51} + \frac{1}{52}*\frac{3}{51}$. In other words, the probability of the intersection is equal to the probability of the first card being a Heart and the second one a 10 \textit{plus} the first card being both a Heart and a 10.\\
+	Hence, $\frac{1}{4} * \frac{4}{51} + \frac{1}{52}*\frac{3}{51} = \frac{1}{4} * \frac{1}{13} = \frac{1}{52}$. Events A and B are independent.
+\end{enumerate}
+
+
+\end{document}
